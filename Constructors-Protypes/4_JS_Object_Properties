@@ -1,0 +1,70 @@
+This file demonstrates the use of constructor functions in JavaScript, adding properties and methods, and working with object properties.
+
+---
+
+## Rectangle Constructor Function
+
+```javascript
+// Define a constructor function called 'Rectangle'
+// Constructor functions are used to create objects with similar properties
+function Rectangle(name, width, height) {
+  // Assign the 'name' parameter to the 'name' property of the object
+  this.name = name;
+
+  // Assign the 'width' parameter to the 'width' property of the object
+  this.width = width;
+
+  // Assign the 'height' parameter to the 'height' property of the object
+  this.height = height;
+
+  // Define a method 'area' that calculates the area of the rectangle
+  this.area = function () {
+    // Return the product of width and height
+    return this.width * this.height;
+  };
+}
+
+// Create a new Rectangle object named 'rect1' with name, width, and height
+const rect1 = new Rectangle('Rectangle 1', 20, 20);
+
+// Create another Rectangle object named 'rect2' with different width and height
+const rect2 = new Rectangle('Rectangle 2', 20, 30);
+
+// Print the 'name' of rect1 and 'width' of rect2 to the console
+console.log(rect1.name, rect2.width);
+
+// Print the 'width' property of rect1 using bracket notation
+console.log(rect1['width']);
+
+// Add a new property 'color' to rect1 object
+rect1.color = 'red';
+
+// Add a new method 'perimeter' to rect2 object using arrow function
+rect2.perimeter = () => 2 * (rect2.width + rect2.height);
+
+// Delete the 'perimeter' property from rect2
+delete rect2.perimeter;
+
+// Check if rect2 has a property called 'color', returns true/false
+console.log(rect2.hasOwnProperty('color'));
+
+// Check if rect1 has a property called 'color', returns true/false
+console.log(rect1.hasOwnProperty('color'));
+
+// Get all property names (keys) of rect1 as an array
+console.log(Object.keys(rect1));
+
+// Get all property values of rect2 as an array
+console.log(Object.values(rect2));
+
+// Get all key-value pairs of rect1 as an array of arrays
+console.log(Object.entries(rect1));
+
+// Loop through each key-value pair in rect1
+for (let [key, value] of Object.entries(rect1)) {
+  // Only log the key-value pair if the value is NOT a function
+  if (typeof value !== 'function') {
+    console.log(`${key} - ${value}`);
+  }
+}
+
