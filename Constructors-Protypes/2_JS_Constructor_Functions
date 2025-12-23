@@ -1,0 +1,51 @@
+# JavaScript Constructor Functions
+
+This document demonstrates how to use constructor functions in JavaScript to create objects, with line-by-line explanations.
+
+---
+
+```javascript
+// Constructor Function: defines a blueprint for creating Rectangle objects
+function Rectangle(name, width, height) {
+  // `this.name` stores the name of the rectangle instance
+  this.name = name;
+
+  // `this.width` stores the width of the rectangle instance
+  this.width = width;
+
+  // `this.height` stores the height of the rectangle instance
+  this.height = height;
+
+  // `this.area` is a method (function) that calculates the area of the rectangle
+  this.area = function () {
+    // Multiply width and height to get the area
+    return this.height * this.width;
+  };
+}
+
+// Create a new Rectangle instance called `rect1` with name 'Rectangle 1', width 10, height 10
+const rect1 = new Rectangle('Rectangle 1', 10, 10);
+
+// Log the name of `rect1` to the console -> Output: 'Rectangle 1'
+console.log(rect1.name);
+
+// Log the area of `rect1` to the console -> Output: 100
+console.log(rect1.area());
+
+// Create another Rectangle instance called `rect2` with name 'Rectangle 2', width 20, height 10
+const rect2 = new Rectangle('Rectangle 2', 20, 10);
+
+// Create a third Rectangle instance called `rect3` with name 'Rectangle 3', width 30, height 30
+const rect3 = new Rectangle('Rectangle 3', 30, 30);
+
+// Log the names of `rect2` and `rect3` -> Output: 'Rectangle 2 Rectangle 3'
+console.log(rect2.name, rect3.name);
+
+// Log the areas of `rect2` and `rect3` -> Output: 200 900
+console.log(rect2.area(), rect3.area());
+
+//Additional Checks
+// Access the constructor function used to create `rect1`
+console.log(rect1.constructor); // Output: [Function: Rectangle]
+// Check if `rect2` is an instance of the Rectangle constructor
+console.log(rect2 instanceof Rectangle); // Output: true
