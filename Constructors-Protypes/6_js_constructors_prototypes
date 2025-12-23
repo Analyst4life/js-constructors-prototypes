@@ -1,0 +1,67 @@
+This example demonstrates how to use **constructor functions** and **prototypes** in JavaScript to create objects with shared methods.
+
+---
+
+## Rectangle Constructor Function
+
+```javascript
+// Constructor function to create a Rectangle object
+// It takes a name, width, and height as parameters
+function Rectangle(name, width, height) {
+  this.name = name;     // Assign the provided name to the Rectangle object
+  this.width = width;   // Assign the provided width to the Rectangle object
+  this.height = height; // Assign the provided height to the Rectangle object
+}
+
+// Add a method 'area' to the Rectangle prototype
+// Calculates the area of the rectangle (width * height)
+Rectangle.prototype.area = function () {
+  return this.width * this.height;
+};
+
+// Add a method 'perimeter' to the Rectangle prototype
+// Calculates the perimeter of the rectangle (2 * (width + height))
+Rectangle.prototype.perimeter = function () {
+  return 2 * (this.width + this.height);
+};
+
+// Add a method 'isSquare' to the Rectangle prototype
+// Returns true if width equals height, otherwise false
+Rectangle.prototype.isSquare = function () {
+  return this.width === this.height;
+};
+
+// Add a method 'changeName' to the Rectangle prototype
+// Updates the name of the rectangle
+Rectangle.prototype.changeName = function (newName) {
+  this.name = newName;  // Update the name property
+  return this.name;     // Return the new name (optional)
+};
+
+// Create a new Rectangle object named 'rect' with width 10 and height 20
+const rect = new Rectangle('Rect', 10, 20);
+
+// Create another Rectangle object named 'rect2' with width 30 and height 40
+const rect2 = new Rectangle('Rect 2', 30, 40);
+
+// Print the 'rect' object to the console (shows its properties)
+console.log(rect);
+
+// Call the 'area' method on 'rect' (10 * 20 = 200)
+console.log(rect.area());
+
+// Call the 'perimeter' method on 'rect' (2 * (10 + 20) = 60)
+console.log(rect.perimeter());
+
+// Check if 'rect' is a square (false, because 10 !== 20)
+console.log(rect.isSquare());
+
+// Change the name of 'rect' to 'Test'
+rect.changeName('Test');
+
+// Print the updated name of 'rect' ('Test')
+console.log(rect.name);
+
+// Call the 'area' method on 'rect2' (30 * 40 = 1200)
+console.log(rect2.area());
+
