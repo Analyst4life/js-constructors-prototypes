@@ -1,0 +1,54 @@
+# JavaScript Object Literals 
+
+This document demonstrates creating objects using **object literals** in JavaScript and calculating their area using methods.
+
+---
+
+## Rectangle Object
+
+```javascript
+// Create an object called 'rectangle' using an object literal
+const rectangle = {
+  // 'name' property holds a string value representing the rectangle's name
+  name: 'Rectangle 1',
+  
+  // 'width' property stores the rectangle's width
+  width: 20,
+  
+  // 'height' property stores the rectangle's height
+  height: 10,
+  
+  // 'area' is a method to calculate the area of the rectangle
+  // 'this' keyword refers to the object itself, accessing its properties
+  area: function () {
+    // Multiply width by height and return the result
+    return this.width * this.height;
+  },
+};
+
+// Object literals are ideal for single-use objects. 
+// Creating multiple similar objects requires repeating the same structure, 
+// which is inefficient. For many similar objects, classes or constructor functions are more appropriate.
+
+const rectangle2 = {
+  // Second rectangle object
+  name: 'Rectangle 2',
+  
+  // Width of the second rectangle
+  width: 30,
+  
+  // Height of the second rectangle
+  height: 20,
+  
+  // Method to calculate the area of the second rectangle
+  area: function () {
+    // 'this.width' and 'this.height' refer to rectangle2's properties
+    return this.width * this.height;
+  },
+};
+
+// Call the area method of the first rectangle and display the result in the console
+console.log(rectangle.area()); // Output: 200 (20 * 10)
+
+// Call the area method of the second rectangle and display the result in the console
+console.log(rectangle2.area()); // Output: 600 (30 * 20)
