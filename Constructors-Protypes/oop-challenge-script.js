@@ -1,47 +1,52 @@
-// Define a Player class using ES6 class syntax
-class Player {
-  // Constructor method runs when a new Player is created
-  constructor(name) {
-    this.name = name;   // Set the player's name to the given name
-    this.lvl = 1;       // Initialize the player's level to 1
-    this.points = 0;    // Initialize the player's experience points to 0
-  }
+This example demonstrates how to use a constructor function and prototype methods to model a simple player leveling system in JavaScript.
 
-  // Method to gain experience points
-  gainXp(xp) {
-    this.points += xp;  // Add the given XP to the player's current points
+---
 
-    // Check if the player has enough points to level up
-    if (this.points >= 10) {
-      this.lvl++;        // Increase level by 1
-      this.points -= 10; // Subtract 10 points after leveling up
-    }
+## Player Constructor Function
 
-    // Print the player's current status
-    console.log(this.describe());
-  }
-
-  // Method to describe the player's current state
-  describe() {
-    // Return a string showing the player's name, level, and XP
-    return `${this.name} is level ${this.lvl} with ${this.points} experience points`;
-  }
+```javascript
+// Constructor function used to create Player objects
+// Each player will have a name, level, and experience points
+function Player(name) {
+  this.name = name;   // Set the player's name
+  this.lvl = 1;       // Start every player at level 1
+  this.points = 0;    // Start every player with 0 experience points
 }
 
-// Create two Player instances
-const player1 = new Player('Bob');   // New player named Bob
-const player2 = new Player('Alice'); // New player named Alice
+// Add a method called 'gainXp' to the Player prototype
+// This method lets a player earn experience points
+Player.prototype.gainXp = function (xp) {
+  this.points += xp;  // Add experience points
 
-// Simulate gaining XP
-player1.gainXp(4);  // Bob gains 4 XP
-player2.gainXp(7);  // Alice gains 7 XP
-player1.gainXp(5);  // Bob gains 5 XP; may level up
-player2.gainXp(1);  // Alice gains 1 XP; may level up
-player1.gainXp(7);  // Bob gains 7 XP; may level up
-player2.gainXp(9);  // Alice gains 9 XP; may level up
-player1.gainXp(5);  // Bob gains 5 XP; may level up
-player2.gainXp(2);  // Alice gains 2 XP; may level up
+  // Check if the player has enough points to level up
+  if (this.points >= 10) {
+    this.lvl++;        // Increase level
+    this.points -= 10; // Subtract points after leveling up
+  }
 
-// Optional: manually print final state
-// console.log(player1.describe());
-// console.log(player2.describe());
+  // Display the player's current status
+  console.log(this.describe());
+};
+
+// Add a method called 'describe' to the Player prototype
+// Returns a string describing the player's status
+Player.prototype.describe = function () {
+  return `${this.name} is level ${this.lvl} with ${this.points} experience points`;
+};
+
+// Create Player instances
+const player1 = new Player('Bob');
+const player2 = new Player('Alice');
+
+player1.gainXp(4);
+player2.gainXp(7);
+
+player1.gainXp(5);
+player2.gainXp(1);
+
+player1.gainXp(7);
+player2.gainXp(9);
+
+player1.gainXp(5);
+player2.gainXp(2);
+
