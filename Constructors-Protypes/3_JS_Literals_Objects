@@ -1,0 +1,111 @@
+# JavaScript Primitives and Object Wrappers
+
+This document contains examples demonstrating JavaScript **primitives**, **object wrappers**, and the differences between them.
+
+---
+
+## String Examples
+
+```javascript
+// Create a string literal (primitive string)
+const strLit = 'Hello';
+
+// Create a String object (object wrapper for a string)
+const strObj = new String('Hello');
+
+// Log the string literal and its type
+console.log(strLit, typeof strLit); // Output: Hello 'string'
+
+// Log the String object and its type
+console.log(strObj, typeof strObj); // Output: [String: 'Hello'] 'object'
+
+// --- Boxing example ---
+// Call a method on a primitive string
+console.log(strLit.toUpperCase()); // Output: 'HELLO'
+// Even though strLit is a primitive, JS temporarily wraps it in a String object to access methods.
+// This process is called "boxing".
+
+// Access a character in the string using index
+console.log(strLit[0]); // Output: 'H'
+
+// --- Unboxing example ---
+// Retrieve the primitive value from a String object
+console.log(strObj.valueOf(), typeof strObj.valueOf()); // Output: 'Hello' 'string'
+
+// Check the constructor property of the string literal
+console.log(strLit.constructor); // Output: [Function: String]
+
+// Check the constructor property of the String object
+console.log(strObj.constructor); // Output: [Function: String]
+
+// Check if the string literal is an instance of String
+console.log(strLit instanceof String); // Output: false
+
+// Check if the String object is an instance of String
+console.log(strObj instanceof String); // Output: true
+
+// Create a number literal (primitive number)
+const numLit = 20;
+
+// Create a Number object (object wrapper for a number)
+const numObj = new Number(20);
+
+// Log the number literal and its type
+console.log(numLit, typeof numLit); // Output: 20 'number'
+
+// Log the Number object and its type
+console.log(numObj, typeof numObj); // Output: [Number: 20] 'object'
+
+// Create a boolean literal (primitive boolean)
+const boolLit = true;
+
+// Create a Boolean object (object wrapper for a boolean)
+const boolObj = new Boolean(true);
+
+// Log the boolean literal and its type
+console.log(boolLit, typeof boolLit); // Output: true 'boolean'
+
+// Log the Boolean object and its type
+console.log(boolObj, typeof boolObj); // Output: [Boolean: true] 'object'
+
+// Create an array using literal syntax
+const arrLit = [1, 2, 3, 4, 5];
+
+// Create an array using the Array constructor
+const arrObj = new Array(1, 2, 3, 4, 5);
+
+// Log the array literal and its type
+console.log(arrLit, typeof arrLit); // Output: [1,2,3,4,5] 'object'
+
+// Log the array object and its type
+console.log(arrObj, typeof arrObj); // Output: [1,2,3,4,5] 'object'
+
+// Create a function using function expression
+const funcLit = function (x) {
+  return x * x;
+};
+
+// Log the function and its type
+console.log(funcLit, typeof funcLit); // Output: [Function: funcLit] 'function'
+
+// Call the function
+console.log(funcLit(5)); // Output: 25
+
+// Create a function using the Function constructor
+const funcObj = new Function('x', 'return x * x');
+
+// Call the function created with the constructor
+console.log(funcObj(3)); // Output: 9
+
+// Create an object using literal syntax
+const obj1 = {};
+
+// Create an object using the Object constructor
+const obj2 = new Object(); // Behind the scenes, JS does this for obj1 as well
+
+// Log the object literal and its type
+console.log(obj1, typeof obj1); // Output: {} 'object'
+
+// Log the object created via constructor and its type
+console.log(obj2, typeof obj2); // Output: {} 'object'
+
