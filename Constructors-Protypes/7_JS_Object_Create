@@ -1,0 +1,63 @@
+This example demonstrates creating objects in JavaScript using **prototypes** to share methods among multiple instances.
+
+---
+
+## Rectangle Prototype Object
+
+```javascript
+// Define an object that will serve as a prototype for all rectangles
+// It contains shared methods that any rectangle can use
+const rectanglePrototypes = {
+  // Method to calculate the area of the rectangle
+  area: function () {
+    // 'this' refers to the specific rectangle object calling this method
+    // Multiply width by height to get the area
+    return this.width * this.height;
+  },  
+  // Method to calculate the perimeter of the rectangle
+  perimeter: function () {
+    // Perimeter formula: 2 * (width + height)
+    return 2 * (this.width + this.height);
+  },  
+  // Method to check if the rectangle is a square
+  isSquare: function () {
+    // Returns true if height equals width, otherwise false
+    return this.height === this.width;
+  },
+};
+
+// Function to create a new rectangle object
+// Takes height and width as parameters
+function createRectangle(height, width) {
+  // Create a new object with rectanglePrototypes as its prototype
+  // This allows the new object to use the shared methods defined above
+  return Object.create(rectanglePrototypes, {
+    // Define a 'height' property for the new rectangle
+    height: {
+      value: height, // Set its value to the height passed in
+    },
+    // Define a 'width' property for the new rectangle
+    width: {
+      value: width, // Set its value to the width passed in
+    },
+  });
+}
+
+// Create a rectangle object with height 10 and width 20
+const rect = createRectangle(10, 20);
+
+// Log the rectangle object to see its properties
+console.log(rect);
+
+// Call the 'area' method on rect and log the result
+console.log(rect.area()); // Outputs: 200
+
+// Call the 'isSquare' method on rect and log the result
+console.log(rect.isSquare()); // Outputs: false
+
+// Create another rectangle object, this time a square (height = width = 20)
+const rect2 = createRectangle(20, 20);
+
+// Call the 'area' method on rect2 and log the result
+console.log(rect2.area()); // Outputs: 400
+
